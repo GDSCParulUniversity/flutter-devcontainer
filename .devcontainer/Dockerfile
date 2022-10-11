@@ -28,6 +28,8 @@ RUN ls -la ~ && whoami && sudo mkdir -pv ${CMDLINE_HOME} && cd ${CMDLINE_HOME} \
     && sudo unzip commandlinetools-linux-8512546_latest.zip \
     && sudo rm commandlinetools-linux-8512546_latest.zip
 
+# TODO: install sdk with sdkmanager
+ 
 RUN ls -la ${HOME}/ && ls -la ${CMDLINE_HOME} && echo ${CMDLINE_HOME} && sudo chown -Rv vscode:vscode ${HOME}/.local
 RUN sudo chmod +r+w+x -Rv ${HOME}/.local
 
