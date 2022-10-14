@@ -14,8 +14,8 @@ USER vscode
 RUN export HOME="/home/vscode"
 ARG HOME="/home/vscode"
 ENV FLUTTER_HOME="${HOME}/.local/flutter"
-ENV ANDROID_HOME="/home/${USER}/.local"
-ENV ANDROID_SDK_ROOT="/home/${USER}/.local"
+ENV ANDROID_HOME=/home/${USER}/.local
+ENV ANDROID_SDK_ROOT=/home/${USER}/.local
 ENV CMDLINE_HOME="${HOME}/.local/cmdline-tools"
 ENV CMDLINE="${HOME}/.local/cmdline-tools/cmdline-tools/bin"
 
