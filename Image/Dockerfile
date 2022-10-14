@@ -32,6 +32,11 @@ RUN ls -la ~ && whoami && sudo mkdir -pv ${CMDLINE_HOME} && cd ${CMDLINE_HOME} \
 RUN ls -la ${HOME}/ && ls -la ${CMDLINE_HOME} && echo ${CMDLINE_HOME} && sudo chown -Rv vscode:vscode ${HOME}/.local
 RUN sudo chmod +r+w+x -Rv ${HOME}/.local
 
+# Install cmdlinetools and sdk
+RUN sudo apt-get install openjdk-11-jdk --no-install-recommends -y
+RUN sdkmanager --install "build-tools;29.0.0" "platforms;android-29" "platform-tools"
+RUN yes | ${CMDLINE}/sdkmanager --licenses
+
 # setup flutter
 RUN mkdir -pv ${FLUTTER_HOME} \
     && cd ${FLUTTER_HOME} \
