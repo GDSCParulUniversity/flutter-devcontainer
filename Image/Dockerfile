@@ -1,5 +1,4 @@
 ARG VARIENT="ubuntu-22.04"
-ARG USER="vscode"
 FROM mcr.microsoft.com/vscode/devcontainers/base:0-${VARIENT}
 
 ENV DEVCONTAINER="true"
@@ -14,8 +13,8 @@ USER vscode
 RUN export HOME="/home/vscode"
 ARG HOME="/home/vscode"
 ENV FLUTTER_HOME="${HOME}/.local/flutter"
-ENV ANDROID_HOME=/home/${USER}/.local
-ENV ANDROID_SDK_ROOT=/home/${USER}/.local
+ENV ANDROID_HOME=/home/vscode/.local
+ENV ANDROID_SDK_ROOT=/home/vscode/.local
 ENV CMDLINE_HOME="${HOME}/.local/cmdline-tools"
 ENV CMDLINE="${HOME}/.local/cmdline-tools/cmdline-tools/bin"
 
@@ -34,8 +33,7 @@ RUN sudo chmod +r+w+x -Rv ${HOME}/.local
 
 # Install cmdlinetools and sdk
 RUN sudo apt-get install openjdk-11-jdk --no-install-recommends -y
-RUN sdkmanager --install "build-tools;29.0.0" "platforms;android-29" "platform-tools"
-RUN yes | ${CMDLINE}/sdkmanager --licenses
+RUN yes | sdkmanager --install "build-tools;29.0.0" "platforms;android-29" "platform-tools"
 
 # setup flutter
 RUN mkdir -pv ${FLUTTER_HOME} \
