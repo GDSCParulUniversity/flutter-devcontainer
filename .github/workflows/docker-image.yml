@@ -18,6 +18,12 @@ jobs:
       run: docker build --pull --rm -f "Image/Dockerfile" -t flutterdevcontainer:latest "Image"
     
     - name: Push docker image to ghcr.io
-      run: |
+      uses: docker/login-action@v1
+      with:
+        registry: ghcr.io
+        username: gdscparuluniversity
+        password: ${{ secrets.GITHUB_TOKEN }}
+        
+    - run: |
         docker tag flutterdevcontainer:latest ghcr.io/gdscparuluniversity/flutterdevcontainer:latest
         docker push ghcr.io/gdscparuluniversity/flutterdevcontainer:latest
