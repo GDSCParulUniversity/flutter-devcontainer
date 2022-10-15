@@ -1,6 +1,6 @@
 name: Docker Image CI
 
-on: create
+on: "push"
 
 jobs:
 
