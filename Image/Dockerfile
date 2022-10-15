@@ -39,9 +39,10 @@ RUN yes | sdkmanager --install "build-tools;29.0.0" "platforms;android-29" "plat
 RUN mkdir -pv ${FLUTTER_HOME} \
     && cd ${FLUTTER_HOME} \
     && git clone -b master https://github.com/flutter/flutter \
-    && flutter precache \
-    && flutter config --android-sdk "~/.local" \
-    && yes | flutter doctor --android-licenses
+    && flutter precache
+
+RUN flutter config --android-sdk "/home/vscode/.local"
+RUN yes | flutter doctor --android-licenses
 
 # Cleanup
 RUN sudo apt-get clean -y && sudo rm -rf /var/lib/apt/lists/*
