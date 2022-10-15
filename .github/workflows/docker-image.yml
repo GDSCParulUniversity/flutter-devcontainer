@@ -15,4 +15,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build the Docker image
-      run: docker build --pull --rm -f "Image/Dockerfile" -t flutterdevcontainer:$(date +%s) "Image"
+      run: docker build --pull --rm -f "Image/Dockerfile" -t flutterdevcontainer:latest "Image"
+    
+    - name: Push docker image to ghcr.io
+      run: docker push ghcr.io/GDSCParulUniversity/flutterdevcontainer:BETA1
