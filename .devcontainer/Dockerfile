@@ -1,44 +1,4 @@
-ARG VARIENT="ubuntu-22.04"
-FROM mcr.microsoft.com/vscode/devcontainers/base:0-${VARIENT}
+FROM ghcr.io/gdscparuluniversity/flutterdevcontainer:latest
 
 ENV DEVCONTAINER="true"
-
-# setup android sdk
-RUN apt clean && apt-get update && export DEBIAN_FRONTEND=noninteractive \
-    && apt-get -y install android-sdk git \
-    && apt-get clean -y
-
-USER vscode
-
-RUN export HOME="/home/vscode"
-ARG HOME="/home/vscode"
-ENV FLUTTER_HOME="${HOME}/.local/flutter"
-ENV ANDROID_HOME="/usr/lib/android-sdk"
-ENV ANDROID_SDK_ROOT="/usr/lib/android-sdk"
-ENV CMDLINE_HOME="${HOME}/.local/cmdline-tools"
-ENV CMDLINE="${HOME}/.local/cmdline-tools/cmdline-tools/bin"
-
-# setup flutter sdk
-ENV PATH=${PATH}:${FLUTTER_HOME}/flutter/bin:${CMDLINE}
-
-
-# setup command line tools
-RUN ls -la ~ && whoami && sudo mkdir -pv ${CMDLINE_HOME} && cd ${CMDLINE_HOME} \
-    && sudo wget https://dl.google.com/android/repository/commandlinetools-linux-8512546_latest.zip \
-    && sudo unzip commandlinetools-linux-8512546_latest.zip \
-    && sudo rm commandlinetools-linux-8512546_latest.zip
-
-# TODO: install sdk with sdkmanager
- 
-RUN ls -la ${HOME}/ && ls -la ${CMDLINE_HOME} && echo ${CMDLINE_HOME} && sudo chown -Rv vscode:vscode ${HOME}/.local
-RUN sudo chmod +r+w+x -Rv ${HOME}/.local
-
-# setup flutter
-RUN mkdir -pv ${FLUTTER_HOME} \
-    && cd ${FLUTTER_HOME} \
-    && git clone -b master https://github.com/flutter/flutter \
-    && flutter precache
-
-# Cleanup
-RUN sudo apt-get clean -y && sudo rm -rf /var/lib/apt/lists/*
 
