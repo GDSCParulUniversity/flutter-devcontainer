@@ -19,5 +19,5 @@ jobs:
     
     - name: Push docker image to ghcr.io
       run: |
-        docker tag flutterdevcontainer:latest ghcr.io/GDSCParulUniversity/flutterdevcontainer:latest
-        docker push ghcr.io/GDSCParulUniversity/flutterdevcontainer:latest
+        docker tag flutterdevcontainer:latest ghcr.io/gdscparuluniversity/flutterdevcontainer:latest
+        docker push ghcr.io/gdscparuluniversity/flutterdevcontainer:latest
