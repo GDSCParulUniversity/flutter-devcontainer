@@ -7,6 +7,13 @@
 		"args": { "VARIANT": "ubuntu-22.04" }
 	},
 
+	"extensions": [
+		"Dart-Code.flutter",
+		"alexisvt.flutter-snippets",
+		"lizebang.bash-extension-pack",
+		"shakram02.bash-beautify"
+	],
+
     
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [],
