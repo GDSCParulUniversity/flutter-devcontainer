@@ -6,7 +6,7 @@ ENV DEVCONTAINER="true"
 # setup android sdk
 RUN apt clean && apt-get update && export DEBIAN_FRONTEND=noninteractive \
     && apt-get -y install git \
-    && apt install clang cmake ninja-build pkg-config \
+    && apt-get -y install clang cmake ninja-build pkg-config \
     && apt-get clean -y
 
 USER vscode
