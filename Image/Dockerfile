@@ -33,7 +33,7 @@ RUN ls -la ${HOME}/ && ls -la ${CMDLINE_HOME} && echo ${CMDLINE_HOME} && sudo ch
 RUN sudo chmod +r+w+x -Rv ${HOME}/.local
 
 # Install cmdlinetools and sdk
-RUN sudo apt-get install openjdk-11-jdk --no-install-recommends -y
+RUN sudo apt-get install openjdk-21-jdk --no-install-recommends -y
 RUN yes | sdkmanager --install "build-tools;29.0.0" "platforms;android-29" "platform-tools" "cmdline-tools;latest"
 
 # setup flutter
