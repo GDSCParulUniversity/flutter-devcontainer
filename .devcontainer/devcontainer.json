@@ -10,7 +10,7 @@
 	"extensions": [
 		"Dart-Code.flutter",
 		"alexisvt.flutter-snippets",
-		"lizebang.bash-extension-pack",
+		"pinage404.bash-extension-pack",
 		"shakram02.bash-beautify"
 	],
 
